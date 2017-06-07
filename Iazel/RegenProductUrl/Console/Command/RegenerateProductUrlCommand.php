@@ -35,7 +35,9 @@ class RegenerateProductUrlCommand extends Command
         ProductUrlRewriteGenerator $productUrlRewriteGenerator,
         UrlPersistInterface $urlPersist
     ) {
-        $state->setAreaCode('adminhtml');
+        if (!$state->getAreaCode()) {
+            $state->setAreaCode('adminhtml');
+        }
         $this->collection = $collection;
         $this->productUrlRewriteGenerator = $productUrlRewriteGenerator;
         $this->urlPersist = $urlPersist;
