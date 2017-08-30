@@ -84,7 +84,8 @@ class RegenerateProductUrlCommand extends Command
         $list = $this->collection->load();
         foreach($list as $product)
         {
-            if($store_id === Store::DEFAULT_STORE_ID)
+          // fix for #19 - also appears to relate to https://github.com/Iazel/magento2-regenurl/pull/6/commits/179a2e21ee84d9455debf408ad751a5350d2c414
+            if($store_id !== Store::DEFAULT_STORE_ID)
                 $product->setStoreId($store_id);
 
             $this->urlPersist->deleteByData([
