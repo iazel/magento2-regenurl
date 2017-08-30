@@ -69,7 +69,10 @@ class RegenerateProductUrlCommand extends Command
 
     public function execute(InputInterface $inp, OutputInterface $out)
     {
-        if (!$this->state->getAreaCode()) {
+        try {
+          // this tosses an error if the areacode is not set.
+          $this->state->getAreaCode();
+        } catch (\Exception $ex) {
             $this->state->setAreaCode('adminhtml');
         }
 
