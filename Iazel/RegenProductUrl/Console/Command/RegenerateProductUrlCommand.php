@@ -6,6 +6,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
 use Magento\UrlRewrite\Model\UrlPersistInterface;
 use Magento\CatalogUrlRewrite\Model\ProductUrlRewriteGenerator;
@@ -69,8 +70,11 @@ class RegenerateProductUrlCommand extends Command
 
     public function execute(InputInterface $inp, OutputInterface $out)
     {
-        if (!$this->state->getAreaCode()) {
+
+        try {
             $this->state->setAreaCode('adminhtml');
+        } catch (LocalizedException $e) {
+            $out->writeln("Area code has already been set. Skipping");
         }
 
         $store_id = $inp->getOption('store');
