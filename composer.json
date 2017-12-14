@@ -1,6 +1,6 @@
 {
   "name": "iazel/module-regen-product-url",
-  "description": "N/A",
+  "description": "Magento SEO URL regenration tool",
   "require": {
     "php": "~5.6.0|~7.0",
     "magento/framework": "100.1.*",

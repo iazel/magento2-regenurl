@@ -31,3 +31,12 @@ php bin/magento iazel:regenurl
 # Regenerate url for products with id (1, 2, 3, 4) for store 1
 php bin/magento iazel:regenurl -s1 1 2 3 4
 ```
+
+Limitations of  URL Generation Module:
+``` 
+Generate only product urls, but not static pages, catalog urls
+Clear url_rewrite table and regenerate product urls, but not static pages and catalog urls 
+Generate urls without clearing url_rewrite table, working fine
+Generate all stores urls, if not specific store id
+Generate specific store urls by mentioned -s<store_id> as paramater
+```
