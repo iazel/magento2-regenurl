@@ -1,3 +1,11 @@
+# DEPRECATED
+Hello everyone, this repo never meant to be maintained and just happened to come to life after a discussion with an user that had the same problem with regenerating urls.
+I'm really happy that it have been useful for many of you, but given that I don't use Magento anymore and I don't have time nor will to maintain it, please switch to: https://github.com/peterjaap/magento2-regenurl
+
+By the way, thank you @peterjaap for contributing :)
+
+----
+
 # Install
 Download and copy the `Iazel` directory into `app/code/` or install using composer
 
