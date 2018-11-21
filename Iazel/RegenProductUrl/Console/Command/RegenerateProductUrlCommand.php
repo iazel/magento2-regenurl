@@ -84,7 +84,7 @@ class RegenerateProductUrlCommand extends Command
         $list = $this->collection->load();
         foreach($list as $product)
         {
-            if($store_id === Store::DEFAULT_STORE_ID)
+            if($store_id !== Store::DEFAULT_STORE_ID)
                 $product->setStoreId($store_id);
 
             $this->urlPersist->deleteByData([
