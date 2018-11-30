@@ -69,7 +69,11 @@ class RegenerateProductUrlCommand extends Command
 
     public function execute(InputInterface $inp, OutputInterface $out)
     {
-        if (!$this->state->getAreaCode()) {
+        try {
+            if (!$this->state->getAreaCode()) {
+                $this->state->setAreaCode('adminhtml');
+            }
+        } catch(\Exception $e) {
             $this->state->setAreaCode('adminhtml');
         }
 
@@ -97,6 +101,9 @@ class RegenerateProductUrlCommand extends Command
                 $this->urlPersist->replace(
                     $this->productUrlRewriteGenerator->generate($product)
                 );
+                $out->writeln('<info>Regenerate url for '. $product->getId() .' success</info>');
+                $out->writeln('<comment>'. $product->getProductUrl() .'</comment>');
+                $out->writeln('');
             }
             catch(\Exception $e) {
                 $out->writeln('<error>Duplicated url for '. $product->getId() .'</error>');
