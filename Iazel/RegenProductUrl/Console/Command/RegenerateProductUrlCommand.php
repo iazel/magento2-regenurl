@@ -108,7 +108,7 @@ class RegenerateProductUrlCommand extends Command
             if ($storeId != Store::DEFAULT_STORE_ID AND $store->getId() != $storeId) {
                 continue;
             }
-
+            $this->collection->clear();
             $this->collection
                 ->addStoreFilter($store->getId())
                 ->setStoreId($store->getId())
